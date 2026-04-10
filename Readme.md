@@ -14,8 +14,6 @@ If you find this useful, please cite:
 }
 ```
 
-
-
 ## Dataset environment
 
 Our model is trained with the following environment:
@@ -23,9 +21,19 @@ Our model is trained with the following environment:
 * Python 3.8.8
 * PyTorch 1.9.1 with torchvision 0.10.1 (Cuda 11.1)
 * [PyTorch3D](https://github.com/facebookresearch/pytorch3d) 0.6.0
-* [MinkowskiEngine](https://github.com/NVIDIA/MinkowskiEngine) 0.5.4
+* [MinkowskiEngine](https://github.com/NVIDIA/MinkowskiEngine) 0.5.4+ (install from GitHub HEAD; see below)
+
+> **Note:** This repository upgrades to PyTorch 2.0.1 (CUDA 11.8) and PyTorch3D 0.7.4 to support running on RTX 4090 (sm_89 / Ada Lovelace) GPUs, which are not supported by the original CUDA 11.1 environment.
 
 Other required packages can be installed using pip:  `pip install -r src/requirements.txt`.
+
+**Docker users:** MinkowskiEngine must be installed manually after launching the container (GPU must be visible so `torch.cuda.is_available()` returns `True`):
+
+```bash
+pip install git+https://github.com/NVIDIA/MinkowskiEngine.git --no-deps
+```
+
+> **Note:** The PyPI release (`MinkowskiEngine==0.5.4`) fails to compile against CUDA 11.8. Installing from GitHub HEAD is required as it contains post-0.5.4 CUDA 11.x compatibility fixes.
 
 
 

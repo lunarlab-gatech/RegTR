@@ -7,6 +7,6 @@ numpy
 scipy
 open3d
 tensorboard
-vtk==9.0.3
+vtk==9.2.6  # upgraded from 9.0.3; 9.2.x fixes numpy.bool removal (NumPy 1.24+), see README
 
 # Also install pytorch, pytorch3d, and Minkowski Engine
